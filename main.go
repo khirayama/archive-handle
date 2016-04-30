@@ -6,9 +6,37 @@ import (
 	"net/http"
 	"os"
 
+	"github.com/joeshaw/envdecode"
 	"github.com/stretchr/gomniauth"
 	"github.com/stretchr/gomniauth/providers/google"
 )
+
+var (
+	authClient *oauth.Client
+	creds      *oauth.Credentials
+)
+
+func setUpAppAuth() {
+	var ts struct {
+		SecurityKey string `env:"SECURITY_KEY",required`
+	}
+}
+
+func setUpGoogleAuth() {
+	var ts struct {
+		ConsumerKey    string `env:"GOOGLE_KEY",required`
+		ConsumerSecret string `env:"GOOGLE_SECRET",required`
+	}
+	if err := envdecode.Decode(&ts); err != nil {
+		log.Fatalln(err)
+	}
+	authClient = &oauth.Client{
+		Credentials: oauth.Credentials{
+			Token: ts.ConsumerKey,
+			Secret: ts.ConsumerSecret
+		}
+	}
+}
 
 func main() {
 	var addr = flag.String("addr", ":8080", "app address")
