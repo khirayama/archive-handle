@@ -11,9 +11,9 @@ window.addEventListener('load', function () {
     type: 'GET',
     url: '/weather'
   }).done(function(res) {
-    console.log(res);
+    console.log('done: ', res);
   }).always(function(res) {
-    console.log(res);
+    console.log('always:', res);
   });
 });
     </script>
