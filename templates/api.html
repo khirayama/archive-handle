@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <h1>Weather</h1>
+
+    <script>
+window.addEventListener('load', function () {
+  $.ajax({
+    type: 'GET',
+    url: '/weather'
+  }).done(function(res) {
+    console.log(res);
+  }).always(function(res) {
+    console.log(res);
+  });
+});
+    </script>
+  </body>
+</html>

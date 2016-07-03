@@ -1,0 +1,4 @@
+export SECURITY_KEY=foo
+
+export GOOGLE_KEY=foo
+export GOOGLE_SECRET=foo
